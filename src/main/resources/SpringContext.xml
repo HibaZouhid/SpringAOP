@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="compte" class="ma.ensa.beans.Client"/>
+    <bean id="logaop" class="ma.ensa.aspects.LoggingHandler"/>
+    <bean id="compteProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="compte"/>
+        <property name="interceptorNames">
+            <list>
+                <value>logaop</value>
+            </list>
+        </property>
+    </bean>
+</beans>
